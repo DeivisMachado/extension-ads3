@@ -6,8 +6,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
-@RequestMapping("/produto")
+@RequestMapping("/agente")
 @CrossOrigin("*")
 @AllArgsConstructor
 public class AgenteController {
@@ -32,5 +34,24 @@ public class AgenteController {
                 .ok(agenteService.atualizar(id, representacao));
 
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deletarAgente (@PathVariable Integer id) {
+         return agenteService.deletar(id);
+    }
+
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Agente> buscarUm(
+            @PathVariable Integer id
+    ) {
+        return ResponseEntity.ok(agenteService.buscaPeloId(id));
+    }
+
+    @GetMapping
+    public ResponseEntity<List<Agente>> buscarVarios() {
+        return ResponseEntity.ok(agenteService.buscarVarios());
+    }
+
 
 }

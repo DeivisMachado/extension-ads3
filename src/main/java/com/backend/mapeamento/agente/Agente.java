@@ -36,14 +36,14 @@ public class Agente {
     private String nome;
 
     @Column(name = "descricao")
-    @NotNull(message = "O campo descricao não pode ser nulo.")
+    @NotNull(message = "O campo descrição não pode ser nulo.")
     @Size(
             max = 500,
-            message = "O campo descricao não pode ter mais que 500 caracteres."
+            message = "O campo descrição não pode ter mais que 500 caracteres."
     )
     @Size(
             min = 100,
-            message = "O campo descricao não pode ter menos que 100 caracteres."
+            message = "O campo descrição não pode ter menos que 100 caracteres."
     )
     private String descricao;
 

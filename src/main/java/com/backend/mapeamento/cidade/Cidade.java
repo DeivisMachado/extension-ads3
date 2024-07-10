@@ -17,4 +17,7 @@ public class Cidade {
     @Column(name = "id_cidade")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    @Column(name = "nome")
+    private String nome;
 }

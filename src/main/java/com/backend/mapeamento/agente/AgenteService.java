@@ -1,9 +1,14 @@
 package com.backend.mapeamento.agente;
 
 import com.backend.mapeamento.exception.ClientRequestException;
+import lombok.AllArgsConstructor;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@AllArgsConstructor
+@Service
 public class AgenteService {
 
     private AgenteRepository agenteRepository;
@@ -25,8 +30,9 @@ public class AgenteService {
                 .orElseThrow(() -> new ClientRequestException("Agente não encontrado."));
     }
 
-    public void deletar(Integer id) {
+    public ResponseEntity<Void> deletar(Integer id) {
         agenteRepository.deleteById(id);
+        return null;
     }
 
     public List<Agente> buscarVarios() {
