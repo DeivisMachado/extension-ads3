@@ -1,9 +1,8 @@
-package com.backend.mapeamento.agente;
+package com.backend.mapeamento.cidade;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface AgenteRepository extends JpaRepository<Agente, Integer> {
-
+public interface CidadeRepository extends JpaRepository<Cidade, Integer> {
 }

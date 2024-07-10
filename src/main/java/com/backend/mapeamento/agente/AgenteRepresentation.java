@@ -1,5 +1,6 @@
 package com.backend.mapeamento.agente;
 
+import com.backend.mapeamento.cidade.Cidade;
 import jakarta.persistence.Column;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -33,9 +34,9 @@ public interface AgenteRepresentation {
 
         @NotNull(message = "O campo telefone não pode ser nulo.")
         @Size(
-                max = 14,
-                min = 13,
-                message = "O campo telefone deve ter 13 caracteres."
+                max = 15,
+                min = 14,
+                message = "O campo telefone deve ter 14 ou 15 caracteres."
         )
         private String telefone;
 
@@ -83,7 +84,11 @@ public interface AgenteRepresentation {
         )
         private String complemento;
 
-        public Agente transformaEmAgente() {
+
+        @NotNull(message = "O tipo de agente não pode ser nulo.")
+        private Agente.TipoAgente tipo;
+
+        public Agente transformaEmAgente(Cidade cidade) {
             return Agente.builder()
                     .nome(this.nome)
                     .descricao(this.descricao)
@@ -94,6 +99,8 @@ public interface AgenteRepresentation {
                     .cep(this.cep)
                     .numero(this.numero)
                     .logradouro(this.logradouro)
+                    .cidade(cidade)
+                    .tipo(this.tipo)
                     .build();
         }
     }

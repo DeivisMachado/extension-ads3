@@ -1,6 +1,7 @@
 package com.backend.mapeamento.agente;
 
 import com.backend.mapeamento.cidade.Cidade;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.persistence.Entity;
 import jakarta.validation.constraints.NotNull;
@@ -16,6 +17,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 @Entity(name = "agente")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Agente {
 
     @Id
@@ -50,8 +52,8 @@ public class Agente {
     @Column(name = "telefone")
     @NotNull(message = "O campo telefone não pode ser nulo.")
     @Size(
-            max = 11,
-            min = 10,
+            max = 15,
+            min = 14,
             message = "O campo telefone está incorreto."
     )
     private String telefone;
@@ -102,6 +104,12 @@ public class Agente {
             max = 50
     )
     private String complemento;
+
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "tipo_agente")
+    @NotNull(message = "O tipo de agente não pode ser nulo.")
+    private TipoAgente tipo;
 
     public enum TipoAgente {
         INCUBADORA("Incubadora"),

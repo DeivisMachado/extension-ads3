@@ -1,5 +1,7 @@
 package com.backend.mapeamento.agente;
 
+import com.backend.mapeamento.cidade.Cidade;
+import com.backend.mapeamento.cidade.CidadeService;
 import com.backend.mapeamento.exception.ClientRequestException;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -12,9 +14,11 @@ import java.util.List;
 public class AgenteService {
 
     private AgenteRepository agenteRepository;
+    private CidadeService cidadeService;
 
     public Agente cadastrar(AgenteRepresentation.Criar representacao) {
-        Agente agente = representacao.transformaEmAgente();
+        Cidade cidadeEscolhida = cidadeService.buscaPeloId(representacao.getId_cidade());
+        Agente agente = representacao.transformaEmAgente(cidadeEscolhida);
         return agenteRepository.save(agente);
 
     }
