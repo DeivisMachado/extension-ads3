@@ -36,8 +36,8 @@ public class AgenteController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deletarAgente (@PathVariable Integer id) {
-         return agenteService.deletar(id);
+    public void deletarAgente (@PathVariable Integer id) {
+         agenteService.deletar(id);
     }
 
 

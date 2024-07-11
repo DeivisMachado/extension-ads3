@@ -6,6 +6,8 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 
+import java.util.Optional;
+
 public interface AgenteRepresentation {
 
     @Data
@@ -84,7 +86,6 @@ public interface AgenteRepresentation {
         )
         private String complemento;
 
-
         @NotNull(message = "O tipo de agente não pode ser nulo.")
         private Agente.TipoAgente tipo;
 
@@ -149,42 +150,39 @@ public interface AgenteRepresentation {
         )
         private String email;
 
-        @Column(name = "logradouro")
         @NotNull(message = "O logradouro email não pode ser nulo.")
         @Size(
                 max = 100
         )
         private String logradouro;
 
-        @Column(name = "numero")
         @NotNull(message = "O campo numero não pode ser nulo.")
         @Size(
                 max = 10
         )
         private String numero;
 
-        @Column(name = "cep")
         @NotNull(message = "O campo cep não pode ser nulo.")
         @Size(
                 max = 9
         )
         private String cep;
 
-        @Column(name = "bairro")
         @NotNull(message = "O campo bairro não pode ser nulo.")
         @Size(
                 max = 100
         )
         private String bairro;
 
-        @Column(name = "complemento")
         @Size(
                 max = 50
         )
         private String complemento;
 
+        @NotNull(message = "O tipo de agente não pode ser nulo.")
+        private Agente.TipoAgente tipo;
 
-        public Agente atualizaAgente(Agente agente) {
+        public Agente atualizaAgente(Agente agente, Optional<Cidade> cidade) {
             if (this.nome != null) agente.setNome(this.nome);
             if (this.descricao != null) agente.setDescricao(this.descricao);
             if (this.email != null) agente.setEmail(this.email);
@@ -194,6 +192,9 @@ public interface AgenteRepresentation {
             if (this.logradouro != null) agente.setLogradouro(this.logradouro);
             if (this.numero != null) agente.setNumero(this.numero);
             if (this.complemento != null) agente.setComplemento(this.complemento);
+            if (this.id_cidade != null && cidade.isPresent()) agente.setCidade(cidade.get());
+            if (this.complemento != null) agente.setComplemento(this.complemento);
+            if (this.tipo != null) agente.setTipo(this.tipo);
 
             return agente;
         }
