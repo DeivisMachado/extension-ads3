@@ -21,11 +21,13 @@ public interface LoginRepresentation {
     class Retorno {
         private Integer id;
         private String email;
+        private String token;
 
-        public static Retorno geraRetorno(Login login) {
+        public static Retorno geraRetorno(Login login, String token) {
             return Retorno.builder()
                     .id(login.getId())
                     .email(login.getEmail())
+                    .token(token)
                     .build();
         }
     }

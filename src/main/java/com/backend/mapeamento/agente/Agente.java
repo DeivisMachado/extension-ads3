@@ -27,43 +27,22 @@ public class Agente {
 
     @Column(name = "nome_agente")
     @NotNull(message = "O campo nome não pode ser nulo.")
-    @Size(
-            max = 100,
-            message = "O campo nome não pode ter mais que 100 caracteres."
-    )
-    @Size(
-            min = 3,
-            message = "O campo nome não pode ter menos que 3 caracteres."
-    )
+
     private String nome;
 
     @Column(name = "descricao")
     @NotNull(message = "O campo descrição não pode ser nulo.")
-    @Size(
-            max = 500,
-            message = "O campo descrição não pode ter mais que 500 caracteres."
-    )
-    @Size(
-            min = 100,
-            message = "O campo descrição não pode ter menos que 100 caracteres."
-    )
+
     private String descricao;
 
     @Column(name = "telefone")
     @NotNull(message = "O campo telefone não pode ser nulo.")
-    @Size(
-            max = 15,
-            min = 14,
-            message = "O campo telefone está incorreto."
-    )
+
     private String telefone;
 
     @Column(name = "email")
     @NotNull(message = "O campo email não pode ser nulo.")
-    @Size(
-            max = 100,
-            message = "O campo telefone está incorreto."
-    )
+
     private String email;
 
     @NotNull(message = "O campo cidade não pode ser nulo.")
@@ -73,36 +52,26 @@ public class Agente {
 
     @Column(name = "logradouro")
     @NotNull(message = "O logradouro email não pode ser nulo.")
-    @Size(
-            max = 100
-    )
+
     private String logradouro;
 
     @Column(name = "numero")
     @NotNull(message = "O campo numero não pode ser nulo.")
-    @Size(
-            max = 10
-    )
+
     private String numero;
 
     @Column(name = "cep")
     @NotNull(message = "O campo cep não pode ser nulo.")
-    @Size(
-            max = 9
-    )
+
     private String cep;
 
     @Column(name = "bairro")
     @NotNull(message = "O campo bairro não pode ser nulo.")
-    @Size(
-            max = 100
-    )
+
     private String bairro;
 
     @Column(name = "complemento")
-    @Size(
-            max = 50
-    )
+
     private String complemento;
 
 
