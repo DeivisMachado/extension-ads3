@@ -4,10 +4,12 @@ import jakarta.validation.constraints.NotNull;
 import lombok.Builder;
 import lombok.Data;
 
-public interface LoginRepresentation {
+@Builder
+@Data
+public class LoginRepresentation {
 
     @Data
-    class Singin {
+    static class Singin {
 
         @NotNull(message = "O campo email não pode ser nulo.")
         private String email;
@@ -18,7 +20,7 @@ public interface LoginRepresentation {
 
     @Data
     @Builder
-    class Retorno {
+    static class Retorno {
         private Integer id;
         private String email;
         private String token;
@@ -33,19 +35,17 @@ public interface LoginRepresentation {
     }
 
     @Data
-    class Criar {
-
-        @NotNull(message = "O campo email não pode ser nulo.")
+    @Builder
+    public static class Criar {
         private String email;
-
-        @NotNull(message = "O campo senha não pode ser nulo.")
         private String senha;
+        // adicione outros campos necessários
 
         public Login transformaEmLogin() {
             return Login.builder()
-                    .email(this.email)
-                    .senha(this.senha)
-                    .build();
+                .email(this.email)
+                .senha(this.senha)
+                .build();
         }
     }
 }

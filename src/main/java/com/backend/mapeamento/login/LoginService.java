@@ -4,6 +4,7 @@ import com.backend.mapeamento.exception.ClientRequestException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import com.backend.mapeamento.config.JwtService;
+import com.backend.mapeamento.dto.LoginDTO;
 import com.backend.mapeamento.login.LoginRepresentation;
 
 @Service
@@ -26,11 +27,11 @@ public class LoginService {
         return representacao.transformaEmLogin();
     }
 
-    public LoginRepresentation.Retorno logIn(LoginRepresentation.Singin representacao) {
-        Login login = loginRepository.findByEmailIgnoreCase(representacao.getEmail())
+    public LoginRepresentation.Retorno logIn(LoginDTO.Request request) {
+        Login login = loginRepository.findByEmailIgnoreCase(request.getEmail())
                 .orElseThrow(() -> new ClientRequestException("Email não cadastrado!"));
 
-        if (!login.getSenha().equals(representacao.getSenha())) throw new ClientRequestException("Senha incorreta!");
+        if (!login.getSenha().equals(request.getSenha())) throw new ClientRequestException("Senha incorreta!");
 
         String token = jwtService.gerarToken(login.getEmail());
         return LoginRepresentation.Retorno.geraRetorno(login, token);
