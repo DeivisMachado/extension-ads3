@@ -29,7 +29,7 @@ public interface AgenteRepresentation {
                 message = "O campo descricao não pode ter mais que 1500 caracteres."
         )
         @Size(
-                min = 250,
+                min = 10,
                 message = "O campo descricao não pode ter menos que 250 caracteres."
         )
         private String descricao;
