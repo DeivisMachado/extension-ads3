@@ -37,7 +37,7 @@ public interface AgenteRepresentation {
         @NotNull(message = "O campo telefone não pode ser nulo.")
         @Size(
                 max = 15,
-                min = 14,
+                min = 1,
                 message = "O campo telefone deve ter 14 ou 15 caracteres."
         )
         private String telefone;
@@ -130,7 +130,7 @@ public interface AgenteRepresentation {
                 message = "O campo descricao não pode ter mais que 1500 caracteres."
         )
         @Size(
-                min = 250,
+                min = 10,
                 message = "O campo descricao não pode ter menos que 250 caracteres."
         )
         private String descricao;
@@ -138,7 +138,7 @@ public interface AgenteRepresentation {
         @NotNull(message = "O campo telefone não pode ser nulo.")
         @Size(
                 max = 15,
-                min = 14,
+                min = 1,
                 message = "O campo telefone deve ter 14 ou 15 caracteres."
         )
         private String telefone;
